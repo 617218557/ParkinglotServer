@@ -6,6 +6,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.parkinglot.bean.AdminInfoBean;
 import com.parkinglot.bean.CarInfoBean;
 import com.parkinglot.bean.IMInfoBean;
 import com.parkinglot.bean.ParkingRecordInfoBean;
@@ -360,6 +361,52 @@ public class SelectInfoDao {
 		}
 		return list;
 	}
+	
+	/**
+	 * @category 根据键值对查找管理员信息
+	 * @param key
+	 * @param value
+	 * @return
+	 */
+	public static List<AdminInfoBean> selectAdminInfo(String key, String value) {
+		List<AdminInfoBean> list = new ArrayList<AdminInfoBean>();
+		try {
+			Class<?> tc = Class.forName(className);
+			info = (PublicInfoDao) tc.newInstance();
+			conn = info.getConnection();
+			sql = "select * from " + CreateWordDao.ADMIN_TABLE_NAME + " where "
+					+ key + "=?";
+			ps = conn.prepareStatement(sql);
+			ps.setObject(1, value);
+			rs = ps.executeQuery();
+			while (rs.next()) {
+				AdminInfoBean adminInfoBean = new AdminInfoBean();
+				adminInfoBean.setAdmin_id(rs.getInt(CreateWordDao.ADMIN_ID));
+				adminInfoBean
+						.setAdmin_user(rs.getString(CreateWordDao.ADMIN_USER));
+				adminInfoBean.setAdmin_password(rs
+						.getString(CreateWordDao.ADMIN_PASSWORD));
+
+				list.add(adminInfoBean);
+			}
+		} catch (ClassNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (InstantiationException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IllegalAccessException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			info.free(conn, ps, rs);
+		}
+		return list;
+	}
+
 
 	
 }

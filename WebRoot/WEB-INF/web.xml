@@ -69,6 +69,10 @@
 		<servlet-name>FindIMAccountCL</servlet-name>
 		<servlet-class>com.parkinglot.controller.FindIMAccountCL</servlet-class>
 	</servlet>
+	<servlet>
+		<servlet-name>AdminLoginCL</servlet-name>
+		<servlet-class>com.parkinglot.controller.AdminLoginCL</servlet-class>
+	</servlet>
 
 	<servlet-mapping>
 		<servlet-name>UserRegistCL</servlet-name>
@@ -134,8 +138,12 @@
 		<servlet-name>FindIMAccountCL</servlet-name>
 		<url-pattern>/findimaccountcl</url-pattern>
 	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>AdminLoginCL</servlet-name>
+		<url-pattern>/adminlogincl</url-pattern>
+	</servlet-mapping>
 	
 	<welcome-file-list>
-		<welcome-file>index.jsp</welcome-file>
+		<welcome-file>index.html</welcome-file>
 	</welcome-file-list>
 </web-app>
