@@ -2,7 +2,6 @@ package com.parkinglot.controller;
 
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.net.URLDecoder;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -13,7 +12,6 @@ import net.sf.json.JSONObject;
 
 import com.parkinglot.bean.ResultInfoBean;
 import com.parkinglot.common.GlobalDefine;
-import com.parkinglot.service.impl.CarInfoServiceImpl;
 import com.parkinglot.service.impl.UserInfoServiceImpl;
 import com.parkinglot.utils.StringUtils;
 

@@ -12,20 +12,20 @@ import net.sf.json.JSONObject;
 
 import com.parkinglot.bean.ResultInfoBean;
 import com.parkinglot.common.GlobalDefine;
-import com.parkinglot.service.impl.ParkingRecordServiceImpl;
+import com.parkinglot.service.impl.AdminInfoServiceImpl;
 import com.parkinglot.utils.StringUtils;
 
 /**
- * @category 根据用户id查询停车记录
+ * @category 查找所有车辆信息
  * @author fengyifei
  *
  */
-public class FindParkingRecordByUserIdCL extends HttpServlet {
+public class GetAllCarInfoCL extends HttpServlet{
 
 	/**
 	 * 
 	 */
-	private static final long serialVersionUID = -2124454704101004415L;
+	private static final long serialVersionUID = -7522863471686332462L;
 
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp)
@@ -45,14 +45,11 @@ public class FindParkingRecordByUserIdCL extends HttpServlet {
 		PrintWriter out = resp.getWriter();
 		ResultInfoBean resultInfoBean;
 		try {
-			// 获取参数
-			int user_id = Integer.parseInt(req.getParameter("user_id"));
-			resultInfoBean = ParkingRecordServiceImpl
-					.findRecordByUserId(user_id);
+			resultInfoBean = AdminInfoServiceImpl.getAllCarInfo();
 		} catch (Exception e) {
 			// TODO: handle exception
-			resultInfoBean = new ResultInfoBean(GlobalDefine.RECORD_FIND_USER_FAIL,
-					"未查找到该用户的停车记录信息");
+			resultInfoBean = new ResultInfoBean(GlobalDefine.ERROR_DEFAULT,
+					"暂无车辆信息");
 		}
 		// 返回结果
 		out.write(StringUtils.Base64Encode(JSONObject
@@ -61,5 +58,4 @@ public class FindParkingRecordByUserIdCL extends HttpServlet {
 		out.flush();
 		out.close();
 	}
-
 }

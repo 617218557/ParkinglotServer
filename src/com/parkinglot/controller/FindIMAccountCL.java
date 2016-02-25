@@ -12,7 +12,6 @@ import net.sf.json.JSONObject;
 
 import com.parkinglot.bean.ResultInfoBean;
 import com.parkinglot.common.GlobalDefine;
-import com.parkinglot.service.impl.CarInfoServiceImpl;
 import com.parkinglot.service.impl.IMServiceImpl;
 import com.parkinglot.utils.StringUtils;
 

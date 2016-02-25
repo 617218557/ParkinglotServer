@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.parkinglot.bean.AdminInfoBean;
+import com.parkinglot.bean.CarInfoBean;
+import com.parkinglot.bean.ParkinglotInfoBean;
 import com.parkinglot.bean.ResultInfoBean;
 import com.parkinglot.bean.UserInfoBean;
 import com.parkinglot.common.GlobalDefine;
@@ -53,6 +55,63 @@ public class AdminInfoServiceImpl {
 		else
 			return null;
 
+	}
+
+	/**
+	 * @category 查找所有用户
+	 * @param phoneNum
+	 * @return
+	 */
+	public static ResultInfoBean getAllUser() {
+		List<UserInfoBean> userInfoList = new ArrayList<UserInfoBean>();
+		ResultInfoBean resultInfoBean;
+		userInfoList = SelectInfoDao.selectAllUserInfo();
+		if (userInfoList == null || userInfoList.size() == 0) {
+			// 查找失败
+			resultInfoBean = new ResultInfoBean(GlobalDefine.ERROR_DEFAULT,
+					"暂无用户信息");
+		} else {
+			resultInfoBean = new ResultInfoBean(userInfoList);
+		}
+		return resultInfoBean;
+	}
+
+	/**
+	 * @category 查找所有车位
+	 * @param phoneNum
+	 * @return
+	 */
+	public static ResultInfoBean getParkinglotInfo() {
+		List<ParkinglotInfoBean> parkinglotInfoList = new ArrayList<ParkinglotInfoBean>();
+		ResultInfoBean resultInfoBean;
+		parkinglotInfoList = SelectInfoDao.selectParkinglotInfo();
+		if (parkinglotInfoList == null || parkinglotInfoList.size() == 0) {
+			// 查找失败
+			resultInfoBean = new ResultInfoBean(GlobalDefine.ERROR_DEFAULT,
+					"暂无车位信息");
+		} else {
+			resultInfoBean = new ResultInfoBean(parkinglotInfoList);
+		}
+		return resultInfoBean;
+	}
+
+	/**
+	 * @category 查找所有车辆
+	 * @param phoneNum
+	 * @return
+	 */
+	public static ResultInfoBean getAllCarInfo() {
+		List<CarInfoBean> carInfoList = new ArrayList<CarInfoBean>();
+		ResultInfoBean resultInfoBean;
+		carInfoList = SelectInfoDao.selectAllCarInfo();
+		if (carInfoList == null || carInfoList.size() == 0) {
+			// 查找失败
+			resultInfoBean = new ResultInfoBean(GlobalDefine.ERROR_DEFAULT,
+					"暂无车辆信息");
+		} else {
+			resultInfoBean = new ResultInfoBean(carInfoList);
+		}
+		return resultInfoBean;
 	}
 
 }

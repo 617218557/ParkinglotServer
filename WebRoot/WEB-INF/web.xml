@@ -73,6 +73,18 @@
 		<servlet-name>AdminLoginCL</servlet-name>
 		<servlet-class>com.parkinglot.controller.AdminLoginCL</servlet-class>
 	</servlet>
+	<servlet>
+		<servlet-name>GetAllUserInfoCL</servlet-name>
+		<servlet-class>com.parkinglot.controller.GetAllUserInfoCL</servlet-class>
+	</servlet>
+	<servlet>
+		<servlet-name>GetParkinglotInfoCL</servlet-name>
+		<servlet-class>com.parkinglot.controller.GetParkinglotInfoCL</servlet-class>
+	</servlet>
+	<servlet>
+		<servlet-name>GetAllCarInfoCL</servlet-name>
+		<servlet-class>com.parkinglot.controller.GetAllCarInfoCL</servlet-class>
+	</servlet>
 
 	<servlet-mapping>
 		<servlet-name>UserRegistCL</servlet-name>
@@ -142,7 +154,19 @@
 		<servlet-name>AdminLoginCL</servlet-name>
 		<url-pattern>/adminlogincl</url-pattern>
 	</servlet-mapping>
-	
+	<servlet-mapping>
+		<servlet-name>GetAllUserInfoCL</servlet-name>
+		<url-pattern>/getalluserinfocl</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>GetParkinglotInfoCL</servlet-name>
+		<url-pattern>/getparkinglotinfocl</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>GetAllCarInfoCL</servlet-name>
+		<url-pattern>/getallcarinfocl</url-pattern>
+	</servlet-mapping>
+
 	<welcome-file-list>
 		<welcome-file>index.html</welcome-file>
 	</welcome-file-list>

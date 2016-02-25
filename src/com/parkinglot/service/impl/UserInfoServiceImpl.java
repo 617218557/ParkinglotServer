@@ -92,7 +92,6 @@ public class UserInfoServiceImpl {
 			return list.get(0);
 		else
 			return null;
-
 	}
 
 	/**
@@ -150,5 +149,4 @@ public class UserInfoServiceImpl {
 		}
 		return resultInfoBean;
 	}
-
 }

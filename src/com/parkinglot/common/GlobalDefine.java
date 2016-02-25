@@ -72,5 +72,7 @@ public class GlobalDefine {
 	// 查找即时通信账户
 	public static int IM_FIND_FAIL = -1;
 	public static int IM_NOT_REGIST = 2;// 手机号未注册
+	
+	public static int ERROR_DEFAULT  = -1;
 
 }

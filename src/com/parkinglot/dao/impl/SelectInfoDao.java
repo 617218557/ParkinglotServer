@@ -78,6 +78,55 @@ public class SelectInfoDao {
 	}
 
 	/**
+	 * @category 获取所有用户信息
+	 * @param key
+	 * @param value
+	 * @return
+	 */
+	public static List<UserInfoBean> selectAllUserInfo() {
+		List<UserInfoBean> list = new ArrayList<UserInfoBean>();
+		try {
+			Class<?> tc = Class.forName(className);
+			info = (PublicInfoDao) tc.newInstance();
+			conn = info.getConnection();
+			sql = "select * from " + CreateWordDao.USER_TABLE_NAME;
+			ps = conn.prepareStatement(sql);
+			rs = ps.executeQuery();
+			while (rs.next()) {
+				UserInfoBean userInfoBean = new UserInfoBean();
+				userInfoBean.setUser_id(rs.getInt(CreateWordDao.USER_ID));
+				userInfoBean
+						.setUser_name(rs.getString(CreateWordDao.USER_NAME));
+				userInfoBean.setUser_phoneNum(rs
+						.getString(CreateWordDao.USER_PHONENUM));
+				userInfoBean.setUser_password(rs
+						.getString(CreateWordDao.USER_PASSWORD));
+				userInfoBean.setUser_age(rs.getInt(CreateWordDao.USER_AGE));
+				userInfoBean.setUser_gender(rs
+						.getInt(CreateWordDao.USER_GENDER));
+				userInfoBean.setUser_img(rs.getString(CreateWordDao.USER_IMG));
+
+				list.add(userInfoBean);
+			}
+		} catch (ClassNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (InstantiationException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IllegalAccessException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			info.free(conn, ps, rs);
+		}
+		return list;
+	}
+
+	/**
 	 * @category 根据键值对查找停车场车位信息
 	 * @param key
 	 * @param value
@@ -216,6 +265,49 @@ public class SelectInfoDao {
 		}
 		return list;
 	}
+	
+	/**
+	 * @category 查找所有车辆信息
+	 * @param key
+	 * @param value
+	 * @return
+	 */
+	public static List<CarInfoBean> selectAllCarInfo() {
+		List<CarInfoBean> list = new ArrayList<CarInfoBean>();
+		try {
+			Class<?> tc = Class.forName(className);
+			info = (PublicInfoDao) tc.newInstance();
+			conn = info.getConnection();
+			sql = "select * from " + CreateWordDao.CAR_TABLE_NAME;
+			ps = conn.prepareStatement(sql);
+			rs = ps.executeQuery();
+			while (rs.next()) {
+				CarInfoBean carInfoBean = new CarInfoBean();
+				carInfoBean.setCar_id(rs.getInt(CreateWordDao.CAR_ID));
+				carInfoBean.setCar_licenseNum(rs
+						.getString(CreateWordDao.CAR_LICENSENUM));
+				carInfoBean.setCar_type(rs.getString(CreateWordDao.CAR_TYPE));
+				carInfoBean.setUser_id(rs.getInt(CreateWordDao.USER_ID));
+				carInfoBean.setCar_img(rs.getString(CreateWordDao.CAR_IMG));
+				list.add(carInfoBean);
+			}
+		} catch (ClassNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (InstantiationException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IllegalAccessException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			info.free(conn, ps, rs);
+		}
+		return list;
+	}
 
 	/**
 	 * @category 根据键值对查找停车记录信息
@@ -324,15 +416,14 @@ public class SelectInfoDao {
 	 * @param value
 	 * @return
 	 */
-	public static List<IMInfoBean> selectIMInfo(String key,
-			String value) {
+	public static List<IMInfoBean> selectIMInfo(String key, String value) {
 		List<IMInfoBean> list = new ArrayList<IMInfoBean>();
 		try {
 			Class<?> tc = Class.forName(className);
 			info = (PublicInfoDao) tc.newInstance();
 			conn = info.getConnection();
-			sql = "select * from " + CreateWordDao.IM_TABLE_NAME
-					+ " where " + key + "=?";
+			sql = "select * from " + CreateWordDao.IM_TABLE_NAME + " where "
+					+ key + "=?";
 			ps = conn.prepareStatement(sql);
 			ps.setObject(1, value);
 			rs = ps.executeQuery();
@@ -340,8 +431,10 @@ public class SelectInfoDao {
 				IMInfoBean imInfoBean = new IMInfoBean();
 				imInfoBean.setIm_id(rs.getInt(CreateWordDao.IM_ID));
 				imInfoBean.setUser_id(rs.getInt(CreateWordDao.USER_ID));
-				imInfoBean.setIm_account(rs.getString(CreateWordDao.IM_ACCOUNT));
-				imInfoBean.setIm_password(rs.getString(CreateWordDao.IM_PASSWORD));
+				imInfoBean
+						.setIm_account(rs.getString(CreateWordDao.IM_ACCOUNT));
+				imInfoBean.setIm_password(rs
+						.getString(CreateWordDao.IM_PASSWORD));
 				list.add(imInfoBean);
 			}
 		} catch (ClassNotFoundException e) {
@@ -361,7 +454,7 @@ public class SelectInfoDao {
 		}
 		return list;
 	}
-	
+
 	/**
 	 * @category 根据键值对查找管理员信息
 	 * @param key
@@ -382,8 +475,8 @@ public class SelectInfoDao {
 			while (rs.next()) {
 				AdminInfoBean adminInfoBean = new AdminInfoBean();
 				adminInfoBean.setAdmin_id(rs.getInt(CreateWordDao.ADMIN_ID));
-				adminInfoBean
-						.setAdmin_user(rs.getString(CreateWordDao.ADMIN_USER));
+				adminInfoBean.setAdmin_user(rs
+						.getString(CreateWordDao.ADMIN_USER));
 				adminInfoBean.setAdmin_password(rs
 						.getString(CreateWordDao.ADMIN_PASSWORD));
 
@@ -407,6 +500,4 @@ public class SelectInfoDao {
 		return list;
 	}
 
-
-	
 }

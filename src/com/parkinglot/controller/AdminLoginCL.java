@@ -13,7 +13,6 @@ import net.sf.json.JSONObject;
 import com.parkinglot.bean.ResultInfoBean;
 import com.parkinglot.common.GlobalDefine;
 import com.parkinglot.service.impl.AdminInfoServiceImpl;
-import com.parkinglot.service.impl.UserInfoServiceImpl;
 import com.parkinglot.utils.StringUtils;
 
 /**
@@ -26,7 +25,7 @@ public class AdminLoginCL extends HttpServlet {
 	/**
 	 * 
 	 */
-	private static final long serialVersionUID = 7919639282822066820L;
+	private static final long serialVersionUID = 8113985723095775917L;
 
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp)
