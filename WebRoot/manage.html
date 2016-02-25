@@ -1,27 +1,62 @@
-<!DOCTYPE html>
-<html>
+<!doctype html>
+<html lang="en" class="no-js">
 
 <head>
-    <meta charset="utf-8" />
-    <title>后台管理</title>
-    <link rel="stylesheet" type="text/css" href="resources/css/manage.css">
-    <script src="resources/js/jquery-1.12.1.min.js"></script>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="stylesheet" href="resources/css/reset.css">
+    <!-- CSS reset -->
+    <link rel="stylesheet" href="resources/css/style.css">
+    <!-- Resource style -->
+    <script type="text/javascript" src="resources/js/jquery-1.12.1.min.js"></script>
+    <script type="text/javascript" src="resources/js/main.js"></script>
+    <script type="text/javascript" src="resources/js/modernizr.js"></script>
+    <!-- Modernizr -->
+    <script type="text/javascript" src="resources/js/manage.js"></script>
+    <!-- Modernizr -->
 </head>
 
 <body>
-    <header class="bg-dark text-title"><strong>后台管理</strong></header>
-    <ul class="from" style="cursor:pointer">
-        <li class="manageItem manageItemframe-top user solidColorAnim">
-            <img class="img-size" src="resources/img/user_empty.png" style="vertical-align: middle;">
-            <a style="vertical-align: middle;">用户管理</a>
-        </li>
-        <li class="manageItem manageItemframe-middle car solidColorAnim">
-            <img class="img-size" src="resources/img/car_empty.png" style="vertical-align: middle;">
-            <a style="vertical-align: middle;">车辆管理</a></li>
-        <li class="manageItem manageItemframe-bottom parkinglot solidColorAnim">
-            <img class="img-size" src="resources/img/parkinglot_empty.png" style="vertical-align: middle;">
-            <a style="vertical-align: middle;">停车场管理</a></li>
-    </ul>
+    <header class="cd-header">
+        <a href="#0" class="cd-3d-nav-trigger">
+			Menu
+			<span></span>
+		</a>
+    </header>
+    <!-- .cd-header -->
+
+    <main>
+        <!-- all your content here -->
+        <h1 id="div-userManage">user</h1>
+        <h1 id="div-carManage" style="display:none;">car</h1>
+        <h1 id="div-parkinglotManage" style="display:none;">parkinglot</h1>
+    </main>
+
+    <nav class="cd-3d-nav-container">
+        <ul class="cd-3d-nav">
+            <li class="cd-selected">
+                <a href="javascript:void(0)" id="btn-userManage">用户管理</a>
+            </li>
+
+            <li>
+                <a href="javascript:void(0)" id="btn-carManage">车辆管理</a>
+            </li>
+
+            <li>
+                <a href="javascript:void(0)" id="btn-parkinglotManage">停车场管理</a>
+            </li>
+
+            <li>
+                <a href="javascript:void(0)" id="btn-logout">退出登录</a>
+            </li>
+        </ul>
+        <!-- .cd-3d-nav -->
+
+        <span class="cd-marker color-1"></span>
+    </nav>
+    <!-- .cd-3d-nav-container -->
+
 
 </body>
 
