@@ -1,5 +1,7 @@
 package com.parkinglot.controller;
 
+import it.sauronsoftware.base64.Base64;
+
 import java.io.IOException;
 import java.io.PrintWriter;
 
@@ -50,7 +52,13 @@ public class UpdateUserInfoCL extends HttpServlet {
 			String user_name = req.getParameter("user_name");
 			int user_age = Integer.parseInt(req.getParameter("user_age"));
 			int user_gender = Integer.parseInt(req.getParameter("user_gender"));
-			System.out.println(user_name + "@!!!");
+			
+			// 判断是否从前端传来，需要惊醒base64编码，和客户端统一
+			String from = req.getParameter("oper");
+			if (from != null && from.equals("edit")) {
+				user_name = StringUtils.Base64Encode(user_name);
+			}
+			
 			resultInfoBean = UserInfoServiceImpl.updateUserInfo(user_id,
 					user_name, user_gender, user_age);
 		} catch (Exception e) {

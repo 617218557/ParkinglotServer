@@ -46,6 +46,13 @@ public class UpdateCarInfoCL extends HttpServlet {
 			String car_type = req.getParameter("car_type");
 			String car_img = req.getParameter("car_img");
 
+			// 判断是否从前端传来，需要进行base64编码，和客户端统一
+			String from = req.getParameter("oper");
+			if (from != null && from.equals("edit")) {
+				car_licenseNum = StringUtils.Base64Encode(car_licenseNum);
+				car_type = StringUtils.Base64Encode(car_type);
+			}
+
 			resultInfoBean = CarInfoServiceImpl.updateCarInfo(car_id,
 					car_licenseNum, car_type, car_img);
 		} catch (Exception e) {

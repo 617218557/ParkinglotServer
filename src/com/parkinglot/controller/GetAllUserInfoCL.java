@@ -8,12 +8,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import net.sf.json.JSONObject;
-
-import com.parkinglot.bean.ResultInfoBean;
-import com.parkinglot.common.GlobalDefine;
 import com.parkinglot.service.impl.AdminInfoServiceImpl;
-import com.parkinglot.utils.StringUtils;
 
 /**
  * @category 查找所有用户信息
@@ -43,17 +38,8 @@ public class GetAllUserInfoCL extends HttpServlet{
 		resp.setCharacterEncoding("utf-8");
 		// 输出流
 		PrintWriter out = resp.getWriter();
-		ResultInfoBean resultInfoBean;
-		try {
-			resultInfoBean = AdminInfoServiceImpl.getAllUser();
-		} catch (Exception e) {
-			// TODO: handle exception
-			resultInfoBean = new ResultInfoBean(GlobalDefine.ERROR_DEFAULT,
-					"暂无用户信息");
-		}
 		// 返回结果
-		out.write(StringUtils.Base64Encode(JSONObject
-				.fromObject(resultInfoBean)));
+		out.write(AdminInfoServiceImpl.getAllUser());
 		// 关闭流
 		out.flush();
 		out.close();

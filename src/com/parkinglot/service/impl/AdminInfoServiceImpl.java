@@ -5,6 +5,7 @@ import java.util.List;
 
 import com.parkinglot.bean.AdminInfoBean;
 import com.parkinglot.bean.CarInfoBean;
+import com.parkinglot.bean.GridInfoBean;
 import com.parkinglot.bean.ParkinglotInfoBean;
 import com.parkinglot.bean.ResultInfoBean;
 import com.parkinglot.bean.UserInfoBean;
@@ -62,18 +63,10 @@ public class AdminInfoServiceImpl {
 	 * @param phoneNum
 	 * @return
 	 */
-	public static ResultInfoBean getAllUser() {
+	public static String getAllUser() {
 		List<UserInfoBean> userInfoList = new ArrayList<UserInfoBean>();
-		ResultInfoBean resultInfoBean;
 		userInfoList = SelectInfoDao.selectAllUserInfo();
-		if (userInfoList == null || userInfoList.size() == 0) {
-			// 查找失败
-			resultInfoBean = new ResultInfoBean(GlobalDefine.ERROR_DEFAULT,
-					"暂无用户信息");
-		} else {
-			resultInfoBean = new ResultInfoBean(userInfoList);
-		}
-		return resultInfoBean;
+		return new GridInfoBean().getUserGridInfo(userInfoList);
 	}
 
 	/**
@@ -81,18 +74,10 @@ public class AdminInfoServiceImpl {
 	 * @param phoneNum
 	 * @return
 	 */
-	public static ResultInfoBean getParkinglotInfo() {
+	public static String getParkinglotInfo() {
 		List<ParkinglotInfoBean> parkinglotInfoList = new ArrayList<ParkinglotInfoBean>();
-		ResultInfoBean resultInfoBean;
 		parkinglotInfoList = SelectInfoDao.selectParkinglotInfo();
-		if (parkinglotInfoList == null || parkinglotInfoList.size() == 0) {
-			// 查找失败
-			resultInfoBean = new ResultInfoBean(GlobalDefine.ERROR_DEFAULT,
-					"暂无车位信息");
-		} else {
-			resultInfoBean = new ResultInfoBean(parkinglotInfoList);
-		}
-		return resultInfoBean;
+		return new GridInfoBean().getParkinglotGridInfo(parkinglotInfoList);
 	}
 
 	/**
@@ -100,18 +85,10 @@ public class AdminInfoServiceImpl {
 	 * @param phoneNum
 	 * @return
 	 */
-	public static ResultInfoBean getAllCarInfo() {
+	public static String getAllCarInfo() {
 		List<CarInfoBean> carInfoList = new ArrayList<CarInfoBean>();
-		ResultInfoBean resultInfoBean;
 		carInfoList = SelectInfoDao.selectAllCarInfo();
-		if (carInfoList == null || carInfoList.size() == 0) {
-			// 查找失败
-			resultInfoBean = new ResultInfoBean(GlobalDefine.ERROR_DEFAULT,
-					"暂无车辆信息");
-		} else {
-			resultInfoBean = new ResultInfoBean(carInfoList);
-		}
-		return resultInfoBean;
+		return new GridInfoBean().getCarGridInfo(carInfoList);
 	}
 
 }

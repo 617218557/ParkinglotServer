@@ -82,7 +82,7 @@ public class ParkinglotInfoServiceImpl {
 		List<ParkinglotInfoBean> resultList = new ArrayList<ParkinglotInfoBean>();
 		for (ParkinglotInfoBean bean : parkList) {
 			for (CarInfoBean car : carList) {
-				if (bean.getPark_car().equals(car.getCar_id()+"")) {
+				if (bean.getPark_car().equals(car.getCar_id() + "")) {
 					resultList.add(bean);
 					continue;
 				}
@@ -121,17 +121,18 @@ public class ParkinglotInfoServiceImpl {
 			if (TimeUtils.comparePointTime(park_startTime)) {
 				// 在当前时间之后 可以预约车位
 				// 检查车辆是否已经预约
-				if(SelectInfoDao.selectParkinglotInfo(CreateWordDao.PARK_CAR, car_id+"").size()==0){
-					//车辆可预约 
+				if (SelectInfoDao.selectParkinglotInfo(CreateWordDao.PARK_CAR,
+						car_id + "").size() == 0) {
+					// 车辆可预约
 					if (UpdateInfoDao.updateParkingLotInfo(park_id,
-							GlobalDefine.PARK_FEE, GlobalDefine.PARK_USED, car_id,
-							park_startTime)) {
+							GlobalDefine.PARK_FEE, GlobalDefine.PARK_USED,
+							car_id, park_startTime)) {
 						resultInfoBean = new ResultInfoBean("预约成功");
 					} else {
 						resultInfoBean = new ResultInfoBean(
 								GlobalDefine.PARK_ORDER_FAIL, "预约失败");
 					}
-				}else{
+				} else {
 					// 该车已经预约
 					resultInfoBean = new ResultInfoBean(
 							GlobalDefine.PARK_ORDER_CAR_ORDERED, "该车辆已经有预约");
@@ -195,13 +196,26 @@ public class ParkinglotInfoServiceImpl {
 	 */
 	public static void clearParkinglot() {
 		List<ParkinglotInfoBean> list = SelectInfoDao.selectParkinglotInfo();
-		for(ParkinglotInfoBean bean:list){
-			if(bean.getPark_isUse() == GlobalDefine.PARK_USED){
+		for (ParkinglotInfoBean bean : list) {
+			if (bean.getPark_isUse() == GlobalDefine.PARK_USED) {
 				// 如果车位被占用，则自动结束停车
 				endOrderParkingSpace(bean.getPark_id());
 			}
-			UpdateInfoDao.updateParkingLotInfo(bean.getPark_id(), GlobalDefine.PARK_FEE,
-					GlobalDefine.PARK_NOT_USED, 0, "");
+			UpdateInfoDao.updateParkingLotInfo(bean.getPark_id(),
+					GlobalDefine.PARK_FEE, GlobalDefine.PARK_NOT_USED, 0, "");
 		}
+	}
+
+	public static ResultInfoBean updateParkinglot(int park_id, double park_fee,
+			int park_isUse, int park_car, String park_startTime) {
+		ResultInfoBean resultInfoBean;
+		if (UpdateInfoDao.updateParkingLotInfo(park_id, GlobalDefine.PARK_FEE,
+				park_isUse, park_car, park_startTime)) {
+			resultInfoBean = new ResultInfoBean("取消成功");
+		} else {
+			resultInfoBean = new ResultInfoBean(GlobalDefine.PARK_CANCLE_FAIL,
+					"取消失败");
+		}
+		return resultInfoBean;
 	}
 }

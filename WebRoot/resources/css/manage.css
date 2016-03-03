@@ -18,3 +18,8 @@ body {
     background-color: #fefefe;
     color: #5e5e5e;
 }
+
+.margin-1{
+    margin-left: 40px;
+    margin-right: 40px;
+}

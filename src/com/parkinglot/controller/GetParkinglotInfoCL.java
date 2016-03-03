@@ -43,17 +43,8 @@ public class GetParkinglotInfoCL extends HttpServlet{
 		resp.setCharacterEncoding("utf-8");
 		// 输出流
 		PrintWriter out = resp.getWriter();
-		ResultInfoBean resultInfoBean;
-		try {
-			resultInfoBean = AdminInfoServiceImpl.getParkinglotInfo();
-		} catch (Exception e) {
-			// TODO: handle exception
-			resultInfoBean = new ResultInfoBean(GlobalDefine.ERROR_DEFAULT,
-					"暂无车位信息");
-		}
 		// 返回结果
-		out.write(StringUtils.Base64Encode(JSONObject
-				.fromObject(resultInfoBean)));
+		out.write(AdminInfoServiceImpl.getParkinglotInfo());
 		// 关闭流
 		out.flush();
 		out.close();

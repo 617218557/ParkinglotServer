@@ -19,13 +19,6 @@ import com.parkinglot.bean.UserInfoBean;
  *
  */
 public class SelectInfoDao {
-	static Connection conn = null;
-	static java.sql.PreparedStatement ps = null;
-	static ResultSet rs = null;
-	static String className = "com.parkinglot.dao.impl.PublicInfoDao";
-	static PublicInfoDao info = null;
-	static String sql = null;
-
 	/**
 	 * @category 根据键值对查找用户信息
 	 * @param key
@@ -33,6 +26,13 @@ public class SelectInfoDao {
 	 * @return
 	 */
 	public static List<UserInfoBean> selectUserInfo(String key, String value) {
+		Connection conn = null;
+		java.sql.PreparedStatement ps = null;
+		ResultSet rs = null;
+		String className = "com.parkinglot.dao.impl.PublicInfoDao";
+		PublicInfoDao info = null;
+		String sql = null;
+
 		List<UserInfoBean> list = new ArrayList<UserInfoBean>();
 		try {
 			Class<?> tc = Class.forName(className);
@@ -84,6 +84,13 @@ public class SelectInfoDao {
 	 * @return
 	 */
 	public static List<UserInfoBean> selectAllUserInfo() {
+		Connection conn = null;
+		java.sql.PreparedStatement ps = null;
+		ResultSet rs = null;
+		String className = "com.parkinglot.dao.impl.PublicInfoDao";
+		PublicInfoDao info = null;
+		String sql = null;
+
 		List<UserInfoBean> list = new ArrayList<UserInfoBean>();
 		try {
 			Class<?> tc = Class.forName(className);
@@ -134,6 +141,13 @@ public class SelectInfoDao {
 	 */
 	public static List<ParkinglotInfoBean> selectParkinglotInfo(String key,
 			String value) {
+		Connection conn = null;
+		java.sql.PreparedStatement ps = null;
+		ResultSet rs = null;
+		String className = "com.parkinglot.dao.impl.PublicInfoDao";
+		PublicInfoDao info = null;
+		String sql = null;
+
 		List<ParkinglotInfoBean> list = new ArrayList<ParkinglotInfoBean>();
 		try {
 			Class<?> tc = Class.forName(className);
@@ -182,6 +196,13 @@ public class SelectInfoDao {
 	 * @return
 	 */
 	public static List<ParkinglotInfoBean> selectParkinglotInfo() {
+		Connection conn = null;
+		java.sql.PreparedStatement ps = null;
+		ResultSet rs = null;
+		String className = "com.parkinglot.dao.impl.PublicInfoDao";
+		PublicInfoDao info = null;
+		String sql = null;
+
 		List<ParkinglotInfoBean> list = new ArrayList<ParkinglotInfoBean>();
 		try {
 			Class<?> tc = Class.forName(className);
@@ -228,6 +249,13 @@ public class SelectInfoDao {
 	 * @return
 	 */
 	public static List<CarInfoBean> selectCarInfo(String key, String value) {
+		Connection conn = null;
+		java.sql.PreparedStatement ps = null;
+		ResultSet rs = null;
+		String className = "com.parkinglot.dao.impl.PublicInfoDao";
+		PublicInfoDao info = null;
+		String sql = null;
+
 		List<CarInfoBean> list = new ArrayList<CarInfoBean>();
 		try {
 			Class<?> tc = Class.forName(className);
@@ -273,6 +301,13 @@ public class SelectInfoDao {
 	 * @return
 	 */
 	public static List<CarInfoBean> selectAllCarInfo() {
+		Connection conn = null;
+		java.sql.PreparedStatement ps = null;
+		ResultSet rs = null;
+		String className = "com.parkinglot.dao.impl.PublicInfoDao";
+		PublicInfoDao info = null;
+		String sql = null;
+
 		List<CarInfoBean> list = new ArrayList<CarInfoBean>();
 		try {
 			Class<?> tc = Class.forName(className);
@@ -317,6 +352,13 @@ public class SelectInfoDao {
 	 */
 	public static List<ParkingRecordInfoBean> selectRecordInfo(String key,
 			String value) {
+		Connection conn = null;
+		java.sql.PreparedStatement ps = null;
+		ResultSet rs = null;
+		String className = "com.parkinglot.dao.impl.PublicInfoDao";
+		PublicInfoDao info = null;
+		String sql = null;
+
 		List<ParkingRecordInfoBean> list = new ArrayList<ParkingRecordInfoBean>();
 		try {
 			Class<?> tc = Class.forName(className);
@@ -366,6 +408,13 @@ public class SelectInfoDao {
 	 */
 	public static List<ParkingRecordInfoBean> selectRecordInfoByUserId(
 			String user_id) {
+		Connection conn = null;
+		java.sql.PreparedStatement ps = null;
+		ResultSet rs = null;
+		String className = "com.parkinglot.dao.impl.PublicInfoDao";
+		PublicInfoDao info = null;
+		String sql = null;
+
 		List<ParkingRecordInfoBean> list = new ArrayList<ParkingRecordInfoBean>();
 		try {
 			Class<?> tc = Class.forName(className);
@@ -417,6 +466,13 @@ public class SelectInfoDao {
 	 * @return
 	 */
 	public static List<IMInfoBean> selectIMInfo(String key, String value) {
+		Connection conn = null;
+		java.sql.PreparedStatement ps = null;
+		ResultSet rs = null;
+		String className = "com.parkinglot.dao.impl.PublicInfoDao";
+		PublicInfoDao info = null;
+		String sql = null;
+
 		List<IMInfoBean> list = new ArrayList<IMInfoBean>();
 		try {
 			Class<?> tc = Class.forName(className);
@@ -462,6 +518,13 @@ public class SelectInfoDao {
 	 * @return
 	 */
 	public static List<AdminInfoBean> selectAdminInfo(String key, String value) {
+		Connection conn = null;
+		java.sql.PreparedStatement ps = null;
+		ResultSet rs = null;
+		String className = "com.parkinglot.dao.impl.PublicInfoDao";
+		PublicInfoDao info = null;
+		String sql = null;
+
 		List<AdminInfoBean> list = new ArrayList<AdminInfoBean>();
 		try {
 			Class<?> tc = Class.forName(className);
