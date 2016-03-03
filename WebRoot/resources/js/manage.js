@@ -27,7 +27,7 @@ $(document).ready(function () {
     });
 
     $("#btn-logout").click(function () {
-        window.localtion.href('index.html');
+        window.location.href = "index.html";
     });
 
     function initUserPage() {
