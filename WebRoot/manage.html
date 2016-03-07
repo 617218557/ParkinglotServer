@@ -5,6 +5,7 @@
     <meta charset="utf-8">
     <script type="text/javascript" src="resources/js/jquery-1.12.1.min.js"></script>
     <script type="text/javascript" src="resources/js/manage.js"></script>
+    <script type="text/javascript" src="resources/js/base64.js"></script>
     <!--导航栏-->
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="resources/css/navigation-reset.css">
@@ -33,17 +34,17 @@
             <table id="list-user"></table>
             <div id="pager-user"></div>
         </div>
-        
+
         <div id="div-carManage" style="display:none;">
             <table id="list-car"></table>
             <div id="pager-car"></div>
         </div>
-        
+
         <div id="div-parkinglotManage" style="display:none;">
             <table id="list-parkinglot"></table>
             <div id="pager-parkinglot"></div>
         </div>
-        
+
     </main>
 
     <nav class="cd-3d-nav-container">
@@ -70,9 +71,39 @@
     </nav>
     <!-- .cd-3d-nav-container -->
     <div style="text-align:center;margin:50px 0; font:normal 14px/24px 'MicroSoft YaHei';color:#ffffff"> </div>
-    
+
     <script>
+        function delUser(user_id) {
+            if (confirm("确定删除id为" + user_id + "的用户?")) {
+                $.get("deleteusercl", "user_id=" + user_id,
+                    function(data) {
+                        var result = $.parseJSON($.base64.decode(data));
+                        if (result.code == 1) {
+                            alert('删除成功');
+                            $("#list-user").trigger("reloadGrid");
+                        } else {
+                            // 显示错误信息
+                            alert(result.msg);
+                        }
+                    });
+            }
+        }
     
+        function delCar(car_id){
+             if (confirm("确定删除id为" + car_id + "的车辆?")) {
+                $.get("deletecarinfocl", "car_id=" + car_id,
+                    function(data) {
+                        var result = $.parseJSON($.base64.decode(data));
+                        if (result.code == 1) {
+                            alert('删除成功');
+                            $("#list-car").trigger("reloadGrid");
+                        } else {
+                            // 显示错误信息
+                            alert(result.msg);
+                        }
+                    });
+            }
+        }
     </script>
 </body>
 

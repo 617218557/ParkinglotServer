@@ -104,9 +104,10 @@ $(document).ready(function () {
                     var cl = ids[i];
                     be = "<input style='height:22px;width:50px;' type='button' value='编辑' onclick=\"jQuery('#list-user').editRow('" + cl + "');\" />";
                     se = "<input style='height:22px;width:50px;' type='button' value='保存' onclick=\"jQuery('#list-user').saveRow('" + cl + "');\" />";
-                    ce = "<input style='height:22px;width:50px;' type='button' value='取消' onclick=\"jQuery('#list-user').restoreRow('" + cl + "');\" />";
+                    ce = "<input style='height:22px;width:50px;' type='button' value='删除' onclick='delUser(" + cl + ")' />";
+                    de = "<input style='height:22px;width:50px;' type='button' value='取消' onclick=\"jQuery('#list-user').restoreRow('" + cl + "');\" />";
                     jQuery("#list-user").jqGrid('setRowData', ids[i], {
-                        act: be + se + ce
+                        act: be + se + ce + de
                     });
                 }
             },
@@ -177,9 +178,10 @@ $(document).ready(function () {
                     var cl = ids[i];
                     be = "<input style='height:22px;width:50px;' type='button' value='编辑' onclick=\"jQuery('#list-car').editRow('" + cl + "');\" />";
                     se = "<input style='height:22px;width:50px;' type='button' value='保存' onclick=\"jQuery('#list-car').saveRow('" + cl + "');\" />";
-                    ce = "<input style='height:22px;width:50px;' type='button' value='取消' onclick=\"jQuery('#list-car').restoreRow('" + cl + "');\" />";
+                    ce = "<input style='height:22px;width:50px;' type='button' value='删除' onclick='delCar(" + cl + ")' />";
+                    de = "<input style='height:22px;width:50px;' type='button' value='取消' onclick=\"jQuery('#list-car').restoreRow('" + cl + "');\" />";
                     jQuery("#list-car").jqGrid('setRowData', ids[i], {
-                        act: be + se + ce
+                        act: be + se + ce + de
                     });
                 }
             },

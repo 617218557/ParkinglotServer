@@ -11,6 +11,7 @@ import com.parkinglot.bean.ResultInfoBean;
 import com.parkinglot.bean.UserInfoBean;
 import com.parkinglot.common.GlobalDefine;
 import com.parkinglot.dao.impl.CreateWordDao;
+import com.parkinglot.dao.impl.DeleteInfoDao;
 import com.parkinglot.dao.impl.SelectInfoDao;
 
 public class AdminInfoServiceImpl {
@@ -89,6 +90,24 @@ public class AdminInfoServiceImpl {
 		List<CarInfoBean> carInfoList = new ArrayList<CarInfoBean>();
 		carInfoList = SelectInfoDao.selectAllCarInfo();
 		return new GridInfoBean().getCarGridInfo(carInfoList);
+	}
+
+	/**
+	 * @category 删除用户
+	 * @param user_id
+	 * @return
+	 */
+	public static ResultInfoBean delUser(int user_id) {
+		boolean result = false;
+		result = DeleteInfoDao.deleteUser(user_id);
+		ResultInfoBean resultInfoBean;
+		if (result) {
+			resultInfoBean = new ResultInfoBean("删除成功");
+		} else {
+			resultInfoBean = new ResultInfoBean(GlobalDefine.ERROR_DEFAULT,
+					"删除失败");
+		}
+		return resultInfoBean;
 	}
 
 }

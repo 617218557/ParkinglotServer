@@ -17,13 +17,44 @@ public class DeleteInfoDao {
 	static String className = "com.parkinglot.dao.impl.PublicInfoDao";
 	static PublicInfoDao info = null;
 	static String sql = null;
+	
+	/**
+	 * @category删除用户 
+	 * @param user_id
+	 * @return
+	 */
+	public static boolean deleteUser(int user_id){
+		boolean flag = false;
+		try {
+			Class<?> tc = Class.forName(className);
+			info = (PublicInfoDao) tc.newInstance();
+			conn = info.getConnection();
+			sql = "delete from " + CreateWordDao.USER_TABLE_NAME + " where "
+					+ CreateWordDao.USER_ID + "=" + user_id + ";";
+			ps = conn.prepareStatement(sql);
+			ps.executeUpdate();
+			flag = true;
+		} catch (ClassNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (InstantiationException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IllegalAccessException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			info.free(conn, ps, rs);
+		}
+		return flag;	
+	}
 
 	/**
 	 * @category 删除车辆信息
 	 * @param car_id
-	 * @param car_licenseNum
-	 * @param user_id
-	 * @param car_type
 	 * @return
 	 */
 	public static boolean deleteCarInfo(int car_id) {
