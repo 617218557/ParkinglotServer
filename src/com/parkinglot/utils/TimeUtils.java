@@ -25,7 +25,7 @@ public class TimeUtils {
 	}
 
 	public static String getCurrentTime() {
-		return getCurrentTime("yyyy-MM-dd HH:mm:ss");
+		return getCurrentTime();
 	}
 
 	/**
@@ -67,6 +67,9 @@ public class TimeUtils {
 			Date now = df.parse(time1);
 			Date after = df.parse(time2);
 			long timeDiff = after.getTime() - now.getTime();
+			if (timeDiff < 0) {
+				timeDiff = -timeDiff;
+			}
 			hour = timeDiff / (60 * 60 * 1000);
 			if (hour - (int) hour != 0) {
 				hour += 1;
