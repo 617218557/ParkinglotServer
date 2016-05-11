@@ -211,10 +211,10 @@ public class ParkinglotInfoServiceImpl {
 		ResultInfoBean resultInfoBean;
 		if (UpdateInfoDao.updateParkingLotInfo(park_id, GlobalDefine.PARK_FEE,
 				park_isUse, park_car, park_startTime)) {
-			resultInfoBean = new ResultInfoBean("取消成功");
+			resultInfoBean = new ResultInfoBean("修改成功");
 		} else {
 			resultInfoBean = new ResultInfoBean(GlobalDefine.PARK_CANCLE_FAIL,
-					"取消失败");
+					"修改失败");
 		}
 		return resultInfoBean;
 	}

@@ -34,7 +34,7 @@ public class GridCellInfoBean {
 
 	public String getCarCellInfo(int index, CarInfoBean carInfoBean) {
 		this.id = index + "";
-		this.cell.add(carInfoBean.getUser_id() + "");
+		this.cell.add(carInfoBean.getCar_id() + "");
 		try {
 			this.cell
 					.add(Base64.decode(carInfoBean.getCar_licenseNum(), "utf8"));
