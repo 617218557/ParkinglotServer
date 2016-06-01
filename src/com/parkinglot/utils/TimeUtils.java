@@ -71,14 +71,11 @@ public class TimeUtils {
 				timeDiff = -timeDiff;
 			}
 			hour = timeDiff / (60 * 60 * 1000);
-			if (hour - (int) hour != 0) {
-				hour += 1;
-			}
+			hour += timeDiff % (60 * 60 * 1000) == 0 ? 0 : 1;
 		} catch (Exception e) {
 			// TODO: handle exception
 			e.printStackTrace();
 		}
 		return (int) hour;
-
 	}
 }
