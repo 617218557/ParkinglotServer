@@ -25,7 +25,7 @@ public class TimeUtils {
 	}
 
 	public static String getCurrentTime() {
-		return getCurrentTime();
+		return getCurrentTime("yyyy-MM-dd HH:mm:ss");
 	}
 
 	/**
